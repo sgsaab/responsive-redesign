@@ -1,0 +1,583 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Responsive Redesign of OLY Webpage</title>
+    <link
+      rel="stylesheet"
+      href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700&display=swap"
+    />
+    <style>
+      * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+      }
+
+      body {
+        font-family: "Montserrat", sans-serif;
+        line-height: 1.6;
+        color: #333;
+        background-color: #f8f8f8;
+      }
+
+      .container {
+        max-width: 1000px;
+        margin: 0 auto;
+        padding: 0 20px;
+      }
+
+      h1,
+      h2,
+      h3,
+      h4 {
+        font-weight: 600;
+        color: #1a1a1a;
+      }
+
+      h1 {
+        font-size: 2.5rem;
+        margin-bottom: 0.5rem;
+        font-weight: 700;
+      }
+
+      h2 {
+        font-size: 1.8rem;
+        margin-bottom: 1rem;
+        padding-bottom: 0.5rem;
+        border-bottom: 3px solid #e0e0e0;
+      }
+
+      h3 {
+        font-size: 1.4rem;
+        margin-top: 1.5rem;
+        margin-bottom: 1rem;
+      }
+
+      p {
+        margin-bottom: 1.2rem;
+        font-size: 1rem;
+      }
+
+      a {
+        color: #2c7adf;
+        text-decoration: none;
+      }
+
+      a:hover {
+        text-decoration: underline;
+      }
+
+      ul,
+      ol {
+        margin-left: 1.5rem;
+        margin-bottom: 1.5rem;
+      }
+
+      li {
+        margin-bottom: 0.5rem;
+      }
+
+      .header {
+        background-color: #2c7adf;
+        color: white;
+        padding: 3rem 0;
+        text-align: center;
+        margin-bottom: 2rem;
+      }
+
+      .header h1 {
+        color: white;
+        margin-bottom: 0.5rem;
+      }
+
+      .header p {
+        font-size: 1.2rem;
+        max-width: 800px;
+        margin: 0 auto 1.5rem auto;
+      }
+
+      .view-button {
+        display: inline-block;
+        background-color: white;
+        color: #2c7adf;
+        padding: 10px 20px;
+        border-radius: 4px;
+        font-weight: 600;
+        font-size: 1rem;
+        transition: all 0.3s ease;
+      }
+
+      .view-button:hover {
+        background-color: #f0f0f0;
+        text-decoration: none;
+        transform: translateY(-2px);
+      }
+
+      .image-container {
+        width: 100%;
+        margin: 1.5rem 0;
+        border-radius: 8px;
+        overflow: hidden;
+        box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+        background-color: white;
+      }
+
+      .image-container img {
+        width: 100%;
+        height: auto;
+        display: block;
+      }
+
+      .image-caption {
+        padding: 1rem;
+        font-size: 0.9rem;
+        color: #666;
+        text-align: center;
+        border-top: 1px solid #eee;
+      }
+
+      .section {
+        background-color: white;
+        border-radius: 8px;
+        padding: 2rem;
+        margin-bottom: 2rem;
+        box-shadow: 0 2px 6px rgba(0, 0, 0, 0.05);
+      }
+
+      /* Links box */
+      .links-box {
+        background-color: #eef5ff;
+        padding: 1.5rem;
+        border-radius: 8px;
+        margin: 1.5rem 0;
+        border-left: 4px solid #2c7adf;
+      }
+
+      /* Problems list */
+      .problems-list {
+        list-style-type: none;
+        margin-left: 0;
+      }
+
+      .problems-list li {
+        background-color: #f9f9f9;
+        padding: 0.8rem 1rem;
+        margin-bottom: 0.8rem;
+        border-radius: 4px;
+        border-left: 3px solid #2c7adf;
+      }
+
+      /* Gallery grid */
+      .mockup-gallery {
+        display: grid;
+        grid-template-columns: 1fr;
+        gap: 1.5rem;
+        margin: 1.5rem 0;
+      }
+
+      @media (min-width: 768px) {
+        .mockup-gallery {
+          grid-template-columns: 1fr 1fr 1fr;
+        }
+      }
+
+      /* Comparison grid */
+      .comparison-grid {
+        display: grid;
+        grid-template-columns: 1fr;
+        gap: 1.5rem;
+        margin: 1.5rem 0;
+      }
+
+      @media (min-width: 768px) {
+        .comparison-grid {
+          grid-template-columns: 1fr 1fr;
+        }
+      }
+
+      /* Table styles */
+      table {
+        width: 100%;
+        border-collapse: collapse;
+        margin: 1.5rem 0;
+        background-color: white;
+      }
+
+      th,
+      td {
+        border: 1px solid #e0e0e0;
+        padding: 12px 15px;
+        text-align: left;
+      }
+
+      th {
+        background-color: #f5f5f5;
+        font-weight: 600;
+      }
+
+      tr:nth-child(even) {
+        background-color: #f9f9f9;
+      }
+
+      @media (max-width: 768px) {
+        table,
+        thead,
+        tbody,
+        th,
+        td,
+        tr {
+          display: block;
+        }
+
+        thead tr {
+          position: absolute;
+          top: -9999px;
+          left: -9999px;
+        }
+
+        tr {
+          margin-bottom: 1rem;
+          border: 1px solid #e0e0e0;
+        }
+
+        td {
+          border: none;
+          border-bottom: 1px solid #eee;
+          position: relative;
+          padding-left: 50%;
+        }
+
+        td:before {
+          position: absolute;
+          left: 10px;
+          width: 45%;
+          padding-right: 10px;
+          white-space: nowrap;
+          font-weight: 600;
+        }
+
+        td:nth-of-type(1):before {
+          content: "Category";
+        }
+        td:nth-of-type(2):before {
+          content: "Original Issue";
+        }
+        td:nth-of-type(3):before {
+          content: "Solution";
+        }
+      }
+
+      /* Footer */
+      .footer {
+        text-align: center;
+        padding: 2rem 0;
+        margin-top: 3rem;
+        font-size: 0.9rem;
+        color: #666;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="header">
+      <div class="container">
+        <h1>Responsive Redesign</h1>
+        <p>
+          An analysis and redesign of OLY Swim Team's website, focusing on
+          usability, accessibility, and responsive design.
+        </p>
+        <a
+          href="https://www.gomotionapp.com/team/mioly/page/home/"
+          class="view-button"
+          target="_blank"
+          >View Original Website</a
+        >
+        <a
+          href="https://sgsaab.github.io/redesigned-oly-website/"
+          class="view-button"
+          target="_blank"
+          >View Redesigned Website</a
+        >
+      </div>
+    </div>
+
+    <div class="container">
+      <section class="section" id="overview">
+        <h2>Overview</h2>
+        <p>
+          For this project, I selected a public website and analyzed,
+          redesigned, and implemented a responsive version of it. The goal was
+          to address previously identified useability problems and then correct
+          them with a more user-friendly, accessible, and responsive new
+          website.
+        </p>
+
+        <div class="links-box">
+          <h3>Project Links</h3>
+          <p>
+            <strong>Original Website:</strong>
+            <a
+              href="https://www.gomotionapp.com/team/mioly/page/home"
+              target="_blank"
+              >OLY Swimming Home</a
+            >
+          </p>
+          <p>
+            <strong>Redesigned Website:</strong>
+            <a
+              href="https://sgsaab.github.io/redesigned-oly-website/"
+              target="_blank"
+              >Redesigned OLY Website</a
+            >
+          </p>
+        </div>
+      </section>
+
+      <section class="section" id="original-website">
+        <h2>Original Website</h2>
+        <p>
+          I chose to redesign the OLY Swim Team website because it's publicly
+          accessible, not particularly popular, and has a confusing and
+          overwhelming layout.
+        </p>
+
+        <div class="image-container">
+          <img
+            src="assets/original-website.png"
+            alt="Screenshot of the original OLY Swimming website"
+          />
+          <div class="image-caption">
+            The original website showing visual clutter and usability issues
+          </div>
+        </div>
+      </section>
+
+      <section class="section" id="usability-problems">
+        <h2>Identifying Usability Problems</h2>
+        <p>
+          I analyzed the website based on three key usability criteria:
+          efficiency, learnability, and memorability. I also assessed the site's
+          conceptual model and accessibility.
+        </p>
+
+        <h3>Efficiency Issues</h3>
+        <ul class="problems-list">
+          <li>
+            The arrows to navigate between images only appear on hover and often
+            don't work, requiring multiple clicks
+          </li>
+          <li>
+            Dropdown menus in the navigation bar extend below the viewport,
+            requiring users to scroll down
+          </li>
+          <li>
+            Photo transitions are unnecessarily slow, even for previously loaded
+            images (try clicking 3+ photos under the facebook post)
+          </li>
+          <li>
+            Most sections under "Upcoming Events" don't display anything except
+            for "Team Events", and are redundant or useless
+          </li>
+        </ul>
+
+        <h3>Learnability Issues</h3>
+        <ul class="problems-list">
+          <li>
+            Inconsistency in header logos: all are clickable except the Speedo
+            logo, which causes a misleading conceptual model
+          </li>
+          <li>
+            Important buttons like "Register Here" and "Spirit Wear Store" are
+            tucked away
+          </li>
+          <li>
+            The login button is hidden at the top of the screen with no
+            descriptive text
+          </li>
+          <li>
+            The "Pool" text changes the cursor to indicate it's clickable, but
+            nothing happens when clicked, conflicting with a conceptual model
+          </li>
+        </ul>
+
+        <h3>Memorability Issues</h3>
+        <ul class="problems-list">
+          <li>
+            Visual clutter and oversized header make the site layout difficult
+            to remember
+          </li>
+          <li>
+            The “more events” button at the bottom of the events list redirects
+            the user instead of expanding the list, which is a misleading
+            conceptual model. A “see more” type button normally loads more
+            content instead of redirecting.
+          </li>
+        </ul>
+
+        <h3>Accessibility Analysis</h3>
+        <p>
+          There are many accessibility issues caught by WebAIM WAVE as well.
+          There's little contrast between lots of the text on the screen,
+          particularly when buttons are hovered, causing an accessibility issue
+          and strain on the eyes. Also, no photos or links have alt text
+          provided. Furthermore, many items are in black boxes against a black
+          background, making it difficult to see them.
+        </p>
+      </section>
+      <section class="section" id="visual-redesign">
+        <h2>Visual Redesign</h2>
+
+        <h3>Style Guide</h3>
+        <p>
+          To begin redesigning the webiste, I created a comprehensive style
+          guide to reference:
+        </p>
+
+        <div class="image-container">
+          <img
+            src="assets/style-guide.png"
+            alt="Style guide for the redesigned website"
+          />
+        </div>
+        <h3>Mockups</h3>
+        <p>
+          I also developed annotated mockups for three different screen sizes to
+          ensure a responsive design:
+        </p>
+        <div class="image-container">
+          <img
+            src="assets/annotated-mockups.png"
+            alt="Figma mockups for the redesigned website"
+          />
+        </div>
+
+        <p>
+          Each mockup is annotated with layout decisions, responsive elements,
+          and interaction states to guide the implementation process. Key
+          responsive design decisions include:
+        </p>
+        <ul>
+          <li>
+            Collapsing the navigation menu into a hamburger menu on mobile
+          </li>
+          <li>Adjusting grid layouts to stack vertically on smaller screens</li>
+          <li>Increasing button and touch target sizes on mobile devices</li>
+          <li>
+            Using relative font sizes to ensure readability across devices
+          </li>
+        </ul>
+      </section>
+
+      <section class="section" id="implementation">
+        <h2>Implementation</h2>
+        <p>
+          The redesigned website was built using HTML and CSS with a focus on
+          responsiveness and accessibility. I used flexbox and CSS Grid for
+          layout management.
+        </p>
+
+        <h3>Key Implementation Decisions</h3>
+        <table>
+          <thead>
+            <tr>
+              <th>Category</th>
+              <th>Original Issue</th>
+              <th>Solution</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td>Navigation</td>
+              <td>
+                Complex navigation with dropdown menus that extend below
+                viewport, links that lead to nothing, and multiple links that
+                lead to the same page.
+              </td>
+              <td>
+                Simplified navigation structure with no redundant or useless
+                links, and a hamburger menu for smaller screens
+              </td>
+            </tr>
+            <tr>
+              <td>Visual Hierarchy</td>
+              <td>Important buttons like "Register Here" were hard to find</td>
+              <td>
+                Prominently placed call-to-action buttons with high contrast
+                colors
+              </td>
+            </tr>
+            <tr>
+              <td>Accessibility</td>
+              <td>Poor contrast, missing alt text</td>
+              <td>
+                WCAG-compliant color contrast, proper alt text for all images
+              </td>
+            </tr>
+            <tr>
+              <td>Images</td>
+              <td>Slow loading, difficult navigation</td>
+              <td>
+                Naturally scrolling gallery which moves for different screen
+                sizes
+              </td>
+            </tr>
+          </tbody>
+        </table>
+      </section>
+
+      <section class="section" id="conclusion">
+        <h2>Conclusion and Reflection</h2>
+        <div class="image-container">
+          <img
+            src="assets/redesigned-website.png"
+            alt="Screenshot of the redesigned OLY Swimming website"
+          />
+          <div class="image-caption">The redesigned website</div>
+        </div>
+
+        <p>
+          This project taught me about the importance of responsive design and
+          accessibility in creating effective web interfaces. By analyzing the
+          original website's issues and addressing them, I was able to create a
+          more user-friendly experience that meets modern web standards.
+        </p>
+
+        <p>Key takeaways from this project:</p>
+        <ul>
+          <li>
+            The importance of a consistent visual language and style guide
+          </li>
+          <li>How to prioritize content and features based on user needs</li>
+          <li>
+            How responsive design principles can accommodate diverse user needs
+          </li>
+        </ul>
+
+        <p>
+          The redesigned website significantly improves the user experience by
+          addressing the efficiency, learnability, and memorability issues
+          identified in the original site while enhancing accessibility for all
+          users.
+        </p>
+
+        <div style="text-align: center; margin-top: 2rem">
+          <a
+            href="https://sgsaab.github.io/redesigned-oly-website/"
+            class="view-button"
+            target="_blank"
+            >View the Redesigned Website</a
+          >
+        </div>
+      </section>
+    </div>
+
+    <div class="footer">
+      <div class="container">
+        <p>
+          UX Research Project | Created for CSCI 1300 by Sana Saab | March 2025
+        </p>
+      </div>
+    </div>
+  </body>
+</html>
